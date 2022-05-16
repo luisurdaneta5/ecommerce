@@ -121,7 +121,118 @@ export const Navbar = () => {
 				<Box>FAQ's</Box>
 			</Container>
 
-			<Container maxWidth='lg'></Container>
+			<Box
+				sx={{
+					position: "relative",
+					zIndex: 1,
+					height: "90px",
+					background: "#fff",
+					transition: "height 250ms ease-in-out",
+				}}
+			>
+				<Container
+					maxWidth='lg'
+					sx={{
+						display: "flex",
+						justifyContent: "space-between",
+					}}
+				>
+					<Box sx={{ display: "flex", alignItems: "center" }}>
+						<img
+							height='80'
+							display='block'
+							src='assets/images/logo.png'
+							alt=''
+						/>
+					</Box>
+
+					<Box
+						sx={{
+							display: "flex",
+							alignItems: "center",
+							ml: 10,
+						}}
+					>
+						<Box
+							sx={{
+								position: "relative",
+								flex: "5 0 0",
+								maxWidth: "1000px",
+								marginLeft: "auto",
+								marginWidth: "auto",
+							}}
+						>
+							<SearchBar />
+						</Box>
+					</Box>
+
+					<Box sx={{ display: "flex", alignItems: "center" }}>
+						{auth !== null ? (
+							<Box
+								sx={{
+									flexGrow: 0,
+								}}
+							>
+								<BadgeN
+									icon={"fa-solid fa-bag-shopping"}
+									cant={1}
+								/>
+
+								<Tooltip title='Abrir Opciones'>
+									<IconButton
+										aria-label=''
+										onClick={handleOpenSettingMenu}
+									>
+										<Avatar
+											sx={{
+												width: {
+													xs: 50,
+													md: 60,
+													lg: 50,
+												},
+												height: {
+													xs: 50,
+													md: 60,
+													lg: 50,
+												},
+											}}
+											alt='Luis Urdaneta'
+											src={`assets/images/users/yo.jpg`}
+										/>
+									</IconButton>
+								</Tooltip>
+								<Menu
+									id='menu-appbar'
+									anchorEl={menuSettings}
+									anchorOrigin={{
+										vertical: "bottom",
+										horizontal: "right",
+									}}
+									keepMounted
+									transformOrigin={{
+										vertical: "top",
+										horizontal: "right",
+									}}
+									open={Boolean(menuSettings)}
+									onClose={handleCloseSettingMenu}
+								>
+									{options.map((option) => (
+										<MenuItem key={option}>
+											<Typography color='black'>
+												{option}
+											</Typography>
+										</MenuItem>
+									))}
+								</Menu>
+							</Box>
+						) : (
+							<Tooltip title='Login / Register'>
+								<BadgeN icon={"fa-regular fa-user"} />
+							</Tooltip>
+						)}
+					</Box>
+				</Container>
+			</Box>
 		</div>
 	);
 };

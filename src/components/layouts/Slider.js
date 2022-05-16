@@ -14,7 +14,7 @@ export const Slider = () => {
 	return (
 		<div
 			style={{
-				marginTop: "150px",
+				marginTop: "",
 			}}
 		>
 			<Carousel controls={true} pause={"hover"} interval={3000}>

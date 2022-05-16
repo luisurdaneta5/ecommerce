@@ -5,12 +5,13 @@ import { InputBase } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
 	position: "relative",
-	width: "57%",
+	width: "100%",
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
 	padding: theme.spacing(0, 2),
 	height: "100%",
+	color: "black",
 	position: "absolute",
 	pointerEvents: "none",
 	display: "flex",
