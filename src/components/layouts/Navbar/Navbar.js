@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-	AppBar,
-	Toolbar,
 	Typography,
 	Box,
 	IconButton,
@@ -12,13 +10,37 @@ import {
 	Container,
 } from "@mui/material";
 
-import { SearchBar } from "./SearchBar";
-import { BadgeN } from "./BadgeN";
+import { SearchBar } from "../Search/SearchBar";
+import { BadgeN } from "../Badge/BadgeN";
+import { MenuOptions } from "../Menu/MenuOptions";
+import { ButtonOption } from "../Buttons/ButtonOption";
 
-const sections = ["Inicio", "Productos", "Quienes Somos", "Contactanos"];
+import "./style.css";
+
 const options = ["Mi Pefil", "Panel Control", "Salir"];
 
 export const Navbar = () => {
+	useEffect(() => {
+		window.addEventListener("scroll", isSticky);
+		return () => {
+			window.removeEventListener("scroll", isSticky);
+		};
+	});
+
+	const isSticky = (e) => {
+		const header = document.querySelector(".headerSection");
+		const box = document.querySelector(".boxsection");
+		const scrollTop = window.scrollY;
+
+		if (scrollTop >= 40) {
+			header.classList.add("isSticky");
+			box.classList.remove("hidden");
+		} else {
+			header.classList.remove("isSticky");
+			box.classList.add("hidden");
+		}
+	};
+
 	const [menuSettings, setMenuSettings] = useState(null);
 
 	const [auth, setAuth] = useState();
@@ -31,15 +53,7 @@ export const Navbar = () => {
 		setMenuSettings(null);
 	};
 	return (
-		<div
-			style={{
-				backgroundColor: "#0F3460",
-				color: "white",
-				height: "40px",
-				display: "block",
-				fontSize: "12px",
-			}}
-		>
+		<div className={"divStyle"}>
 			<Container
 				maxWidth='lg'
 				sx={{
@@ -122,6 +136,7 @@ export const Navbar = () => {
 			</Container>
 
 			<Box
+				className={"headerSection"}
 				sx={{
 					position: "relative",
 					zIndex: 1,
@@ -144,6 +159,10 @@ export const Navbar = () => {
 							src='assets/images/logo.png'
 							alt=''
 						/>
+
+						<Box className={"boxsection hidden"} color='inherit'>
+							<ButtonOption />
+						</Box>
 					</Box>
 
 					<Box
@@ -233,6 +252,8 @@ export const Navbar = () => {
 					</Box>
 				</Container>
 			</Box>
+
+			<MenuOptions />
 		</div>
 	);
 };

@@ -12,7 +12,7 @@ import {
 	Container,
 } from "@mui/material";
 
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "../Search/SearchBar";
 import { BadgeN } from "./BadgeN";
 
 const sections = ["Inicio", "Productos", "Quienes Somos", "Contactanos"];

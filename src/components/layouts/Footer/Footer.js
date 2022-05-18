@@ -8,6 +8,7 @@ export const Footer = () => {
 			<Box
 				sx={{
 					background: "#0f3460",
+					mt: 10,
 				}}
 			>
 				<Container maxWidth='lg'>
