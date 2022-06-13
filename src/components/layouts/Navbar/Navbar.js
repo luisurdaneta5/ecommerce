@@ -87,7 +87,7 @@ export const Navbar = () => {
 								justifyContent: "center",
 							}}
 						>
-							+584127646787
+							+584127646787 
 						</Typography>
 					</Box>
 					<Box
