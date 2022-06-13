@@ -116,7 +116,7 @@ export const MenuOptions = (props) => {
 													Profile
 												</MenuItem>
 												<MenuItem onClick={handleClose}>
-													My account
+													My account 2
 												</MenuItem>
 												<MenuItem onClick={handleClose}>
 													Logout
