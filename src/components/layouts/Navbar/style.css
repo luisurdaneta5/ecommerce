@@ -6,7 +6,7 @@
 	z-index: 1500 !important;
 	box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
 	background-color: #ffffff !important;
-	animation: fadeIn 350ms 1s ease-in both !important;
+	animation: fadeInDown 200ms ease-in both !important;
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
@@ -79,7 +79,7 @@
 	white-space: normal;
 }
 
-.css-udnl1f .dropdown-icon {
+/* .css-udnl1f .dropdown-icon {
 	margin-left: 0.25rem;
 	-webkit-transition: all 250ms ease-in-out;
 	transition: all 250ms ease-in-out;
@@ -87,7 +87,7 @@
 	-moz-transform: rotate(0deg);
 	-ms-transform: rotate(0deg);
 	transform: rotate(0deg);
-}
+} */
 
 .css-v5drnb {
 	width: 100%;

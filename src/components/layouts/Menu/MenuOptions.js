@@ -7,15 +7,13 @@ import {
 	ClickAwayListener,
 	Container,
 	Grow,
-	Link,
 	MenuItem,
 	MenuList,
 	Paper,
 	Popper,
 } from "@mui/material";
 import "./style.css";
-
-const sections = ["Inicio", "Productos", "Quienes Somos", "Contactanos"];
+import { Link } from "react-router-dom";
 
 export const MenuOptions = (props) => {
 	const [open, setOpen] = useState(false);
@@ -132,19 +130,21 @@ export const MenuOptions = (props) => {
 					</Box>
 
 					<Box sx={{ display: "flex" }}>
-						{sections.map((section) => (
-							<MenuItem key={section}>
-								<Link
-									sx={{
-										textDecoration: "none",
-										color: "black",
-									}}
-									href={`/${section}`}
-								>
-									{section}
-								</Link>
-							</MenuItem>
-						))}
+						<MenuItem>
+							<Link className={"links"} to={`/`}>
+								Inicio
+							</Link>
+						</MenuItem>
+						<MenuItem>
+							<Link className={"links"} to={`/`}>
+								Quienes Somos
+							</Link>
+						</MenuItem>
+						<MenuItem>
+							<Link className={"links"} to={`/`}>
+								Contactanos
+							</Link>
+						</MenuItem>
 					</Box>
 				</Container>
 			</Paper>

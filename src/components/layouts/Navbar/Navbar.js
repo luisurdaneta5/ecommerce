@@ -3,10 +3,8 @@ import {
 	Typography,
 	Box,
 	IconButton,
-	MenuItem,
 	Tooltip,
 	Avatar,
-	Menu,
 	Container,
 } from "@mui/material";
 
@@ -16,10 +14,12 @@ import { MenuOptions } from "../Menu/MenuOptions";
 import { ButtonOption } from "../Buttons/ButtonOption";
 
 import "./style.css";
-
-const options = ["Mi Pefil", "Panel Control", "Salir"];
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
+	const { checking, uid, displayName } = useSelector((state) => state.auth);
+
 	useEffect(() => {
 		window.addEventListener("scroll", isSticky);
 		return () => {
@@ -41,17 +41,6 @@ export const Navbar = () => {
 		}
 	};
 
-	const [menuSettings, setMenuSettings] = useState(null);
-
-	const [auth, setAuth] = useState();
-
-	const handleOpenSettingMenu = (event) => {
-		setMenuSettings(event.currentTarget);
-	};
-
-	const handleCloseSettingMenu = () => {
-		setMenuSettings(null);
-	};
 	return (
 		<div className={"divStyle"}>
 			<Container
@@ -153,12 +142,14 @@ export const Navbar = () => {
 					}}
 				>
 					<Box sx={{ display: "flex", alignItems: "center" }}>
-						<img
-							height='80'
-							display='block'
-							src='assets/images/logo.png'
-							alt=''
-						/>
+						<Link to='/'>
+							<img
+								height='80'
+								display='block'
+								src='/assets/images/logo.png'
+								alt=''
+							/>
+						</Link>
 
 						<Box className={"boxsection hidden"} color='inherit'>
 							<ButtonOption />
@@ -186,68 +177,40 @@ export const Navbar = () => {
 					</Box>
 
 					<Box sx={{ display: "flex", alignItems: "center" }}>
-						{auth !== null ? (
+						{!checking ? (
 							<Box
 								sx={{
+									display: "flex",
 									flexGrow: 0,
 								}}
 							>
-								<BadgeN
-									icon={"fa-solid fa-bag-shopping"}
-									cant={1}
-								/>
+								<BadgeN icon={"fa-solid fa-bag-shopping"} />
 
 								<Tooltip title='Abrir Opciones'>
-									<IconButton
-										aria-label=''
-										onClick={handleOpenSettingMenu}
-									>
-										<Avatar
-											sx={{
-												width: {
-													xs: 50,
-													md: 60,
-													lg: 50,
-												},
-												height: {
-													xs: 50,
-													md: 60,
-													lg: 50,
-												},
-											}}
-											alt='Luis Urdaneta'
-											src={`assets/images/users/yo.jpg`}
-										/>
+									<IconButton aria-label=''>
+										<Link to={"/dashboard"}>
+											<Avatar
+												sx={{
+													width: {
+														xs: 50,
+														md: 60,
+														lg: 50,
+													},
+													height: {
+														xs: 50,
+														md: 60,
+														lg: 50,
+													},
+												}}
+												alt={displayName}
+												src={`/assets/images/users/yo.jpg`}
+											/>
+										</Link>
 									</IconButton>
 								</Tooltip>
-								<Menu
-									id='menu-appbar'
-									anchorEl={menuSettings}
-									anchorOrigin={{
-										vertical: "bottom",
-										horizontal: "right",
-									}}
-									keepMounted
-									transformOrigin={{
-										vertical: "top",
-										horizontal: "right",
-									}}
-									open={Boolean(menuSettings)}
-									onClose={handleCloseSettingMenu}
-								>
-									{options.map((option) => (
-										<MenuItem key={option}>
-											<Typography color='black'>
-												{option}
-											</Typography>
-										</MenuItem>
-									))}
-								</Menu>
 							</Box>
 						) : (
-							<Tooltip title='Login / Register'>
-								<BadgeN icon={"fa-regular fa-user"} />
-							</Tooltip>
+							<BadgeN icon={"fa-regular fa-user"} />
 						)}
 					</Box>
 				</Container>
