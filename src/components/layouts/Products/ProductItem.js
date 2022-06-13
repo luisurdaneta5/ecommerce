@@ -2,6 +2,7 @@ import React from "react";
 import {
 	Box,
 	Button,
+	Card,
 	CardContent,
 	Chip,
 	Grid,
@@ -9,8 +10,7 @@ import {
 	Tooltip,
 	Typography,
 } from "@mui/material";
-// import AddIcon from "@mui/icons-material/Add";
-import { Card } from "@mui/material";
+
 import RemoveIcon from "@mui/icons-material/Remove";
 import { AddShoppingCart } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
