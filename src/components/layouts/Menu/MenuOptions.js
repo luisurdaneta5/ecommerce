@@ -116,7 +116,7 @@ export const MenuOptions = (props) => {
 													Profile
 												</MenuItem>
 												<MenuItem onClick={handleClose}>
-													My account
+													My account esto va a dar error 
 												</MenuItem>
 												<MenuItem onClick={handleClose}>
 													Logout
